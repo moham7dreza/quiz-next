@@ -1,6 +1,19 @@
 import "./globals.css";
 
 import {Vazirmatn} from 'next/font/google'
+// import localFont from 'next/font/local'
+//
+// const localFont = localFont({
+//     src: [
+//         {
+//             path: './fonts/VazirMatn-Bold-FD.ttf',
+//             weight: 'bold',
+//             style: 'italic',
+//         }
+//     ],
+//     fontFamily: 'VazirMatn',
+//     display: 'swap',
+// })
 
 const vazirmatn = Vazirmatn({
     subsets: [
