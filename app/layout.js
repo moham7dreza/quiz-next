@@ -1,5 +1,15 @@
 import "./globals.css";
 
+import {Vazirmatn} from 'next/font/google'
+
+const vazirmatn = Vazirmatn({
+    subsets: [
+        'arabic',
+        'latin',
+    ],
+    display: 'swap',
+})
+
 export const metadata = {
     title: {
         default: "تاپ ریت",
@@ -11,7 +21,7 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="fa-IR" dir="rtl">
-        <body>
+        <body className={vazirmatn.className}>
         {children}
         </body>
         </html>
