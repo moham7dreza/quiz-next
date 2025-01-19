@@ -1,5 +1,28 @@
 import "./globals.css";
 
+import {Vazirmatn} from 'next/font/google'
+// import localFont from 'next/font/local'
+//
+// const localFont = localFont({
+//     src: [
+//         {
+//             path: './fonts/VazirMatn-Bold-FD.ttf',
+//             weight: 'bold',
+//             style: 'italic',
+//         }
+//     ],
+//     fontFamily: 'VazirMatn',
+//     display: 'swap',
+// })
+
+const vazirmatn = Vazirmatn({
+    subsets: [
+        'arabic',
+        'latin',
+    ],
+    display: 'swap',
+})
+
 export const metadata = {
     title: {
         default: "تاپ ریت",
@@ -11,7 +34,7 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="fa-IR" dir="rtl">
-        <body>
+        <body className={vazirmatn.className}>
         {children}
         </body>
         </html>
