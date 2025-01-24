@@ -1,8 +1,8 @@
 'use client'
 
 import {quiz} from "../../../data";
-import {useState} from "react";
-import {reset} from "next/dist/lib/picocolors";
+import {useEffect, useState} from "react";
+import Loading from "./loading";
 
 export default function Quiz() {
 
@@ -20,13 +20,18 @@ export default function Quiz() {
     const {questions} = quiz
     // console.log(questions)
 
-    const activeQuestion = questions[activeQuestionIndex]
+    const [currentQuestion, setCurrentQuestionIndex] = useState('')
+    const [answers, setAnswers] = useState([])
+    const [correctAnswer, setCorrectAnswer] = useState('')
 
-    const {
-        question,
-        answers,
-        correctAnswer
-    } = activeQuestion
+    useEffect(() => {
+        setTimeout(() => {
+            const activeQuestion = questions[activeQuestionIndex]
+            setCurrentQuestionIndex(activeQuestion.question)
+            setAnswers(activeQuestion.answers)
+            setCorrectAnswer(activeQuestion.correctAnswer)
+        }, 2000)
+    }, [score]);
 
     const onAnswerSelected = (answer, index) => {
         setSelectedAnswerIndex(index)
@@ -44,6 +49,9 @@ export default function Quiz() {
         if (activeQuestionIndex !== questions.length - 1) {
             // console.log(activeQuestionIndex)
             setActiveQuestionIndex(prevState => prevState + 1)
+            setCurrentQuestionIndex('')
+            setAnswers([])
+            setCorrectAnswer('')
         } else {
             // console.log(showQuizResult)
             setActiveQuestionIndex(0)
@@ -66,18 +74,19 @@ export default function Quiz() {
                 {
                     !showQuizResult ? (
                         <div className='flex-center flex-col'>
-                            <h3>{question}</h3>
+                            <h3>{currentQuestion}</h3>
                             <div className='flex flex-col mt-4'>
                                 {
-                                    answers.map((answer, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => onAnswerSelected(answer, index)}
-                                            className={selectedAnswerIndex === index ? 'bg-red-600' : ''}
-                                        >
-                                            {answer}
-                                        </button>
-                                    ))
+                                    answers.length > 0 ? answers.map((answer, index) => (
+                                            <button
+                                                key={index}
+                                                onClick={() => onAnswerSelected(answer, index)}
+                                                className={selectedAnswerIndex === index ? 'bg-red-600' : ''}
+                                            >
+                                                {answer}
+                                            </button>
+                                        )) :
+                                        <Loading count={answers.length}/>
                                 }
                                 <button disabled={!canPassToNextQuestion ? 'disabled' : ''}
                                         onClick={onNextQuestionSelected}
