@@ -1,7 +1,7 @@
 'use client'
 
 import {quiz} from "../../../data";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import Loading from "./loading";
 
 export default function Quiz() {
@@ -25,12 +25,7 @@ export default function Quiz() {
     const [correctAnswer, setCorrectAnswer] = useState('')
 
     useEffect(() => {
-        setTimeout(() => {
-            const activeQuestion = questions[activeQuestionIndex]
-            setCurrentQuestionIndex(activeQuestion.question)
-            setAnswers(activeQuestion.answers)
-            setCorrectAnswer(activeQuestion.correctAnswer)
-        }, 2000)
+        getData()
     }, [score]);
 
     const onAnswerSelected = (answer, index) => {
@@ -60,6 +55,21 @@ export default function Quiz() {
         setCanPassToNextQuestion(false)
     }
 
+    const getData = () => {
+        const activeQuestion = questions[activeQuestionIndex]
+        setCurrentQuestionIndex(activeQuestion.question)
+        setAnswers(activeQuestion.answers)
+        setCorrectAnswer(activeQuestion.correctAnswer)
+    }
+
+    const timeDelay = async () => {
+        const delay = 1 + Math.floor(Math.random() * 5)
+
+        await timeout(delay * 1000) // ms
+    }
+
+    const timeout = (delay) => new Promise(time => setTimeout(time, delay))
+
     return (
         <>
             <h1>صفحه آزمون</h1>
@@ -77,16 +87,19 @@ export default function Quiz() {
                             <h3>{currentQuestion}</h3>
                             <div className='flex flex-col mt-4'>
                                 {
-                                    answers.length > 0 ? answers.map((answer, index) => (
+                                    // answers.length > 0 ?
+                                        answers.map((answer, index) => (
                                             <button
                                                 key={index}
                                                 onClick={() => onAnswerSelected(answer, index)}
                                                 className={selectedAnswerIndex === index ? 'bg-red-600' : ''}
                                             >
-                                                {answer}
+                                                <Suspense fallback={<Loading count={1}/>}>
+                                                    <span>{timeDelay().then(() => answer)}</span>
+                                                </Suspense>
                                             </button>
-                                        )) :
-                                        <Loading count={answers.length}/>
+                                        ))
+                                        // : <Loading count={answers.length}/>
                                 }
                                 <button disabled={!canPassToNextQuestion ? 'disabled' : ''}
                                         onClick={onNextQuestionSelected}
