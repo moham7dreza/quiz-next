@@ -20,13 +20,20 @@ export default function Quiz() {
     const {questions} = quiz
     // console.log(questions)
 
-    const [currentQuestion, setCurrentQuestionIndex] = useState('')
-    const [answers, setAnswers] = useState([])
-    const [correctAnswer, setCorrectAnswer] = useState('')
+    // const [currentQuestion, setCurrentQuestionIndex] = useState('')
+    // const [answers, setAnswers] = useState([])
+    // const [correctAnswer, setCorrectAnswer] = useState('')
+    console.log(1)
+    // useEffect(() => {
+    //     getData()
+    //     console.log(2)
+    // }, [score]);
 
-    useEffect(() => {
-        getData()
-    }, [score]);
+    const {
+        question: currentQuestion,
+        answers,
+        correctAnswer,
+    } = questions[activeQuestionIndex]
 
     const onAnswerSelected = (answer, index) => {
         setSelectedAnswerIndex(index)
@@ -44,9 +51,9 @@ export default function Quiz() {
         if (activeQuestionIndex !== questions.length - 1) {
             // console.log(activeQuestionIndex)
             setActiveQuestionIndex(prevState => prevState + 1)
-            setCurrentQuestionIndex('')
-            setAnswers([])
-            setCorrectAnswer('')
+            // setCurrentQuestionIndex('')
+            // setAnswers([])
+            // setCorrectAnswer('')
         } else {
             // console.log(showQuizResult)
             setActiveQuestionIndex(0)
@@ -55,20 +62,20 @@ export default function Quiz() {
         setCanPassToNextQuestion(false)
     }
 
-    const getData = () => {
-        const activeQuestion = questions[activeQuestionIndex]
-        setCurrentQuestionIndex(activeQuestion.question)
-        setAnswers(activeQuestion.answers)
-        setCorrectAnswer(activeQuestion.correctAnswer)
-    }
+    // const getData = () => {
+    //     const activeQuestion = questions[activeQuestionIndex]
+    //     setCurrentQuestionIndex(activeQuestion.question)
+    //     setAnswers(activeQuestion.answers)
+    //     setCorrectAnswer(activeQuestion.correctAnswer)
+    // }
 
-    const timeDelay = async () => {
-        const delay = 1 + Math.floor(Math.random() * 5)
-
-        await timeout(delay * 1000) // ms
-    }
-
-    const timeout = (delay) => new Promise(time => setTimeout(time, delay))
+    // const timeDelay = async () => {
+    //     const delay = 1 + Math.floor(Math.random() * 5)
+    //
+    //     await timeout(delay * 1000) // ms
+    // }
+    //
+    // const timeout = (delay) => new Promise(time => setTimeout(time, delay))
 
     return (
         <>
@@ -95,7 +102,8 @@ export default function Quiz() {
                                                 className={selectedAnswerIndex === index ? 'bg-red-600' : ''}
                                             >
                                                 <Suspense fallback={<Loading count={1}/>}>
-                                                    <span>{timeDelay().then(() => answer)}</span>
+                                                    {/*<span>{timeDelay().then(() => answer)}</span>*/}
+                                                    <span>{answer}</span>
                                                 </Suspense>
                                             </button>
                                         ))
