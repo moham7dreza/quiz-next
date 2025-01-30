@@ -3,6 +3,10 @@
 import {quiz} from "../../../data";
 import {Suspense, useEffect, useState} from "react";
 import Loading from "./loading";
+import {QuizResult} from "../../../components/quiz/QuizResult";
+import {QuizAnswers} from "../../../components/quiz/QuizAnswers";
+import {QuizHeader} from "../../../components/quiz/QuizHeader";
+import {QuizButton} from "../../../components/quiz/QuizButton";
 
 export default function Quiz() {
 
@@ -80,55 +84,21 @@ export default function Quiz() {
     return (
         <>
             <h1>صفحه آزمون</h1>
-            <div>
-                {
-                    !showQuizResult ? (
-                        <h2>آزمون : {activeQuestionIndex + 1}, از {questions.length}</h2>
-                    ) : null
-                }
-            </div>
+            <QuizHeader activeQuestionIndex={activeQuestionIndex} questionsLength={questions.length}
+                        showQuizResult={showQuizResult}/>
             <div>
                 {
                     !showQuizResult ? (
                         <div className='flex-center flex-col'>
                             <h3>{currentQuestion}</h3>
-                            <div className='flex flex-col mt-4'>
-                                {
-                                    // answers.length > 0 ?
-                                        answers.map((answer, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => onAnswerSelected(answer, index)}
-                                                className={selectedAnswerIndex === index ? 'bg-red-600' : ''}
-                                            >
-                                                <Suspense fallback={<Loading count={1}/>}>
-                                                    {/*<span>{timeDelay().then(() => answer)}</span>*/}
-                                                    <span>{answer}</span>
-                                                </Suspense>
-                                            </button>
-                                        ))
-                                        // : <Loading count={answers.length}/>
-                                }
-                                <button disabled={!canPassToNextQuestion ? 'disabled' : ''}
-                                        onClick={onNextQuestionSelected}
-                                        className={canPassToNextQuestion ? 'cursor-pointer bg-green-700' : 'bg-gray-600'}
-                                >
-                                    {activeQuestionIndex === questions.length - 1 ? 'پایان' : 'بعدی'}
-                                </button>
-                            </div>
+                            <QuizAnswers answers={answers} onAnswerSelected={onAnswerSelected}
+                                         selectedAnswerIndex={selectedAnswerIndex}/>
+                            <QuizButton questionsLength={questions.length} activeQuestionIndex={activeQuestionIndex}
+                                        canPassToNextQuestion={canPassToNextQuestion}
+                                        onNextQuestionSelected={onNextQuestionSelected}/>
                         </div>
                     ) : (
-                        <section>
-                            <h3>نتایج</h3>
-                            <h4>به طور کلی {(score.score / 25) * 100}% سوالات جواب داده شده است.</h4>
-                            <p>کل سوالات : {questions.length}</p>
-                            <p>سوالات درست : {score.correctAnswers}</p>
-                            <p>سوالات غلط : {score.wrongAnswers}</p>
-
-                            <button onClick={() => window.location.reload()}>
-                                شروع مجدد آزمون
-                            </button>
-                        </section>
+                        <QuizResult questions={questions} score={score}/>
                     )
                 }
             </div>
