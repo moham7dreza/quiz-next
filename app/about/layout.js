@@ -1,8 +1,11 @@
-export default function Layout ({children, info}) {
+export default function Layout ({children, info, modal}) {
     return (
         <div className={'flex-center'}>
-            {children}
-            {info}
+            <div>
+                {children}
+            </div>
+            {/*{info}*/}
+            {modal}
         </div>
     )
 }

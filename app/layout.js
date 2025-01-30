@@ -40,7 +40,7 @@ export default function RootLayout({children, testSlot, testSlotNew}) {
         <body className={vazirmatn.className}>
         <MainLayout>
             {children}
-            {testSlot}
+            {/*{testSlot}*/}
             {/*{testSlotNew}*/}
         </MainLayout>
         </body>
