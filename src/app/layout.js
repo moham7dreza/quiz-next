@@ -3,6 +3,7 @@ import "./globals.css";
 import {Vazirmatn} from 'next/font/google'
 import {MainLayout} from "../components/MainLayout";
 import PrelineScript from "../components/PrelineScript";
+import {ReduxProvider} from "../store/provider";
 
 // import localFont from 'next/font/local'
 //
@@ -38,11 +39,13 @@ export default function RootLayout({children, testSlot, testSlotNew}) {
     return (
         <html lang="fa-IR" dir="rtl">
         <body className={vazirmatn.className}>
-        <MainLayout>
-            {children}
-            {/*{testSlot}*/}
-            {/*{testSlotNew}*/}
-        </MainLayout>
+        <ReduxProvider>
+            <MainLayout>
+                {children}
+                {/*{testSlot}*/}
+                {/*{testSlotNew}*/}
+            </MainLayout>
+        </ReduxProvider>
         </body>
         <PrelineScript />
         </html>
