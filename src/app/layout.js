@@ -1,8 +1,8 @@
 import "./globals.css";
 
 import {Vazirmatn} from 'next/font/google'
-import {MainLayout} from "./components/MainLayout";
-import PrelineScript from "./components/PrelineScript";
+import {MainLayout} from "../components/MainLayout";
+import PrelineScript from "../components/PrelineScript";
 
 // import localFont from 'next/font/local'
 //
