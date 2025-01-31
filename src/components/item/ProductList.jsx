@@ -7,7 +7,7 @@ export default async function ProductList() {
         .then((res) => res.json())
         .then((response) => response.data);
 
-    console.log(items)
+    // console.log(items)
     // ✅ Dispatch items to Redux store
     store.dispatch(setItems(items));
 

@@ -9,7 +9,7 @@ export const Header = () => {
                 <nav className="max-w-[85rem] w-full mx-auto px-4 md:px-6 lg:px-8" aria-label="Global">
                     <div className="relative md:flex md:items-center md:justify-between">
                         <div className="flex items-center justify-between">
-                            <Link href={'/public'}
+                            <Link href={'/'}
                                   className="flex-none text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                   aria-label="Brand">تاپ ریت</Link>
                             <div className="md:hidden">
@@ -67,8 +67,8 @@ export const Header = () => {
                                             className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 w-full hidden z-10 top-full start-0 min-w-[15rem] bg-white md:shadow-2xl rounded-lg py-2 md:p-4 dark:bg-gray-800 dark:divide-gray-700 before:absolute before:-top-5 before:start-0 before:w-full before:h-5">
                                             <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                                                 <div className="flex flex-col mx-1 md:mx-0">
-                                                    <a className="group flex gap-x-5 hover:bg-gray-100 rounded-lg p-4 dark:text-gray-200 dark:hover:bg-gray-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                                       href="#">
+                                                    <Link className="group flex gap-x-5 hover:bg-gray-100 rounded-lg p-4 dark:text-gray-200 dark:hover:bg-gray-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                       href="/shop">
                                                         <svg className="flex-shrink-0 w-5 h-5 mt-1"
                                                              xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                              viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -78,10 +78,10 @@ export const Header = () => {
                                                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                                                         </svg>
                                                         <div className="grow">
-                                                            <p className="font-medium text-gray-800 dark:text-gray-200">تست</p>
-                                                            <p className="text-sm text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-200">تست</p>
+                                                            <p className="font-medium text-gray-800 dark:text-gray-200">آیتم هام</p>
+                                                            <p className="text-sm text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-200">از تاپ ریت</p>
                                                         </div>
-                                                    </a>
+                                                    </Link>
 
                                                 </div>
 

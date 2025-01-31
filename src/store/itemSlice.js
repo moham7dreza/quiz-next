@@ -6,7 +6,10 @@ export const itemSlice = createSlice({
     name: "items",
     initialState: itemAdapter.getInitialState(),
     reducers: {
-        setItems: itemAdapter.setAll,
+        setItems: (state, action) => {
+            // console.log(action.payload)
+            itemAdapter.setAll(state, action.payload)
+        },
     },
 });
 
