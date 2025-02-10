@@ -1,6 +1,5 @@
 // for test in browser link localhost:3000/api according to file system
 
-import {redirect} from "next/navigation";
 import {headers} from "next/headers";
 
 export async function GET(request) {
