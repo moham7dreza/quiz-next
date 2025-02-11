@@ -5,7 +5,16 @@ export function middleware(request) {
     console.log(1)
     // return NextResponse.redirect(new URL('/maintenance', request.url))
 
-    return NextResponse.rewrite(new URL('/maintenance', request.url))
+    // return NextResponse.rewrite(new URL('/maintenance', request.url))
+
+    // conditional statements -> not required any matcher
+    if (request.nextUrl.pathname.startsWith('/about')) { // start with about so /about/a/b/ ...
+        return NextResponse.rewrite(new URL('/about-2', request.url))
+    }
+
+    if (request.nextUrl.pathname.startsWith('/dashboard')) {
+        return NextResponse.rewrite(new URL('/dashboard/user', request.url))
+    }
 }
 
 export const config = {
