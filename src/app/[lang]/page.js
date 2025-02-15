@@ -1,10 +1,14 @@
 import Link from "next/link";
+import {getLang} from "./dictionary";
 
-export default function Home() {
+export default async function Home({params}) {
+    const lang = (await params).lang
+    const dictionary = await getLang(lang);
+
     return (
         <section>
             <h2>
-                تاپ ریت
+                {dictionary['main'].appName}
             </h2>
             <Link
                 // href="/about"
@@ -14,9 +18,13 @@ export default function Home() {
                     pathname: "/about",
                     query: {name: "toprate"}
                 }}
-            >درباره من</Link>
+            >
+                {dictionary['about'].title}
+            </Link>
             <div></div>
-            <Link href='invoice'>invoice</Link>
+            <Link href='invoice'>
+                {dictionary['invoice'].title}
+            </Link>
         </section>
     );
 }

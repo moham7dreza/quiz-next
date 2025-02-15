@@ -3,6 +3,7 @@
     "app-name": "Toprate"
   },
   "about": {
+    "title": "About Page",
     "full-name": "Mohamadreza Rezaei",
     "info": "Backender front developer"
   },
@@ -17,5 +18,8 @@
   "maintain": {
     "title": "Site is not available",
     "message": "We are upgrading"
+  },
+  "invoice": {
+    "title": "Cart Page"
   }
 }
