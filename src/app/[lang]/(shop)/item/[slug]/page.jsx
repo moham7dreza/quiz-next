@@ -6,7 +6,7 @@ export function generateMetadata({params}) {
 }
 
 export async function generateStaticParams() {
-    const response = await fetch('http://toprate.test/api/v1/items').then((res) => res.json())
+    const response = await fetch(process.env.BACKEND_URL + '/api/v1/items').then((res) => res.json())
     // console.log(items)
     const items = response.data.map((item) => ({
         slug: item.slug,
@@ -21,7 +21,7 @@ export default async function Item({params}) {
 
     // console.log(params)
 
-    const { slug } = await params
+    const {slug} = await params
 
     return (
         <div>

@@ -3,7 +3,7 @@ import {store} from "../../store";
 import ProductCard from "../../components/item/ProductCard";
 
 export default async function ProductList() {
-    const items = await fetch("http:/toprate.test/api/v1/items", {cache: "force-cache"})
+    const items = await fetch(process.env.BACKEND_URL + '/api/v1/items', {cache: "force-cache"})
         .then((res) => res.json())
         .then((response) => response.data);
 
