@@ -1,5 +1,5 @@
-import ProductList from "../../../components/item/ProductList";
-import Cart from "../../../components/item/Cart";
+import ProductList from "components/item/ProductList";
+import Cart from "components/item/Cart";
 
 export default function Shop() {
     return (

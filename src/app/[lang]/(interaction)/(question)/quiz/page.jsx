@@ -1,8 +1,8 @@
 'use client'
 
-import {quiz} from "../../../data";
+import {quiz} from "data";
 import {useState} from "react";
-import {QuizAnswers, QuizButton, QuizHeader, QuizResult,} from "../../../../components";
+import {QuizAnswers, QuizButton, QuizHeader, QuizResult,} from "components";
 
 export default function Quiz() {
 

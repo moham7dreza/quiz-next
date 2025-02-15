@@ -1,5 +1,5 @@
 import {Suspense} from "react";
-import Loading from "../../app/(interaction)/(question)/quiz/loading";
+import Loading from "app/[lang]/(interaction)/(question)/quiz/loading";
 
 export const QuizAnswers = ({answers, onAnswerSelected, selectedAnswerIndex}) => {
     return (

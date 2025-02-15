@@ -1,9 +1,9 @@
-import "./globals.css";
+import "styles/globals.css";
 
 import {Vazirmatn} from 'next/font/google'
-import {MainLayout} from "../components/MainLayout";
-import PrelineScript from "../components/PrelineScript";
-import {ReduxProvider} from "../store/provider";
+import {MainLayout} from "components/MainLayout";
+import PrelineScript from "components/PrelineScript";
+import {ReduxProvider} from "store/provider";
 
 // import localFont from 'next/font/local'
 //
