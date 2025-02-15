@@ -1,16 +1,13 @@
 import {NextResponse} from 'next/server'
 import {match} from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
-
-let locales = ['en-US', 'fa-IR', 'fa', 'en']
+import {defaultLocale, locales} from "./helpers";
 
 
 function getLocale(request) {
     let headers = {}
     request.headers.forEach((value, key) => (headers[key] = value))
     let languages = new Negotiator({headers}).languages()
-
-    let defaultLocale = 'fa-IR'
 
     return match(languages, locales, defaultLocale);
 }

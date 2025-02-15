@@ -4,6 +4,8 @@ import {Vazirmatn} from 'next/font/google'
 import {MainLayout} from "components/MainLayout";
 import PrelineScript from "components/PrelineScript";
 import {ReduxProvider} from "store/provider";
+import {dir, locales} from "../../helpers";
+import localFont from "next/font/local";
 
 // import localFont from 'next/font/local'
 //
@@ -19,13 +21,26 @@ import {ReduxProvider} from "store/provider";
 //     display: 'swap',
 // })
 
-const vazirmatn = Vazirmatn({
-    subsets: [
-        'arabic',
-        'latin',
-    ],
-    display: 'swap',
-})
+// const vazirmatn = Vazirmatn({
+//     subsets: [
+//         'arabic',
+//         'latin',
+//     ],
+//     display: 'swap',
+// })
+
+const vazirmatn = localFont({
+    src: "../../assets/Vazir.woff2",
+    display: "swap",
+});
+
+
+export async function generateStaticParams() {
+    return locales.map((locale) => ({
+        lang: locale,
+        dir: dir[locale]
+    }))
+}
 
 export const metadata = {
     title: {
