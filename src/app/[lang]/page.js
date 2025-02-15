@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {getLang} from "./dictionary";
+import {LocaleSwitcher} from "../../components/LocaleSwitcher";
 
 export default async function Home({params}) {
     const lang = (await params).lang
@@ -10,6 +11,7 @@ export default async function Home({params}) {
             <h2>
                 {dictionary['main'].appName}
             </h2>
+            <LocaleSwitcher/>
             <Link
                 // href="/about"
                 // replace={true} remove browser route history -> default is false
