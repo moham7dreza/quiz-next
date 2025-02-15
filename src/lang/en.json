@@ -1,0 +1,21 @@
+{
+  "main": {
+    "app-name": "Toprate"
+  },
+  "about": {
+    "full-name": "Mohamadreza Rezaei",
+    "info": "Backender front developer"
+  },
+  "not-found": {
+    "message": "Page not found",
+    "back-to-home": "Back to homepage"
+  },
+  "error": {
+    "message": "Problem occurred while",
+    "try-again": "Please try again"
+  },
+  "maintain": {
+    "title": "Site is not available",
+    "message": "We are upgrading"
+  }
+}

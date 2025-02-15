@@ -1,8 +1,26 @@
 import { NextResponse } from 'next/server'
+import { match } from '@formatjs/intl-localematcher'
+import Negotiator from 'negotiator'
+
+let locales = ['en-US', 'fa-IR', 'fa', 'en']
+
+
+function getLocale(request) {
+    let headers = {}
+    request.headers.forEach((value, key) => (headers[key] = value))
+    let languages = new Negotiator({ headers }).languages()
+
+    let defaultLocale = 'fa-IR'
+
+    return match(languages, locales, defaultLocale);
+}
+
+
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
-    console.log(1)
+    const locale = getLocale(request)
+    console.log(locale)
     // return NextResponse.redirect(new URL('/maintenance', request.url))
 
     // return NextResponse.rewrite(new URL('/maintenance', request.url))
