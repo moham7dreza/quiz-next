@@ -43,5 +43,8 @@ export const options = {
                 return null
             }
         })
-    ]
+    ],
+    pages: {
+        signIn: '/auth/login'
+    }
 }
