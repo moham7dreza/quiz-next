@@ -6,6 +6,7 @@ import PrelineScript from "components/PrelineScript";
 import {ReduxProvider} from "store/provider";
 import {dir, locales} from "../../helpers";
 import localFont from "next/font/local";
+import {getLang} from "./dictionary";
 
 // import localFont from 'next/font/local'
 //
@@ -52,12 +53,13 @@ export const metadata = {
 
 export default async function RootLayout({children, params}) {
     const lang = (await params).lang
+    const dictionary = await getLang(lang);
     const dir = lang === 'en-US' ? 'ltr' : 'rtl'
     return (
         <html lang={lang} dir={dir}>
         <body className={vazirmatn.className}>
         <ReduxProvider>
-            <MainLayout>
+            <MainLayout lang={lang} dictionary={dictionary}>
                 {children}
             </MainLayout>
         </ReduxProvider>

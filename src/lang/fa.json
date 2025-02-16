@@ -1,6 +1,6 @@
 {
   "main": {
-    "app-name": "تاپ ریت"
+    "appName": "تاپ ریت"
   },
   "about": {
     "title" : "درباره من",
@@ -21,5 +21,10 @@
   },
   "invoice": {
     "title": "صفحه سبد خرید"
+  },
+  "auth": {
+    "login": "ورود",
+    "loginRegister": "ورود/ثبت نام",
+    "register": "ثبت نام"
   }
 }

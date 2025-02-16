@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import GithubImage from "assets/github-white.svg";
 
-export default function Login() {
+export default function Login({lang, dictionary}) {
 
     const router = useRouter()
 
@@ -19,7 +19,7 @@ export default function Login() {
     const password = useRef("")
 
     // از چه صفحه ای اومده لاگین که بعدش برش میگردونم اونجا
-    const callbackUrl = searchParams.get('callbackUrl') || '/quiz'
+    const callbackUrl = searchParams.get('callbackUrl') || `/${lang}/quiz`
 
     const onSubmit = async (event) => {
         event.preventDefault()
