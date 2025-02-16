@@ -5,7 +5,7 @@ import {useState} from "react";
 import {QuizAnswers, QuizButton, QuizHeader, QuizResult,} from "components";
 
 export default function Quiz({dictionary, lang}) {
-    console.log(lang)
+    // console.log(lang)
     const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
     const [canPassToNextQuestion, setCanPassToNextQuestion] = useState(false)
     const [showQuizResult, setShowQuizResult] = useState(false)
@@ -23,7 +23,7 @@ export default function Quiz({dictionary, lang}) {
     // const [currentQuestion, setCurrentQuestionIndex] = useState('')
     // const [answers, setAnswers] = useState([])
     // const [correctAnswer, setCorrectAnswer] = useState('')
-    console.log(1)
+
     // useEffect(() => {
     //     getData()
     //     console.log(2)

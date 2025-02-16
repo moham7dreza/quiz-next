@@ -20,18 +20,18 @@ export default function Login({lang, dictionary}) {
 
     // از چه صفحه ای اومده لاگین که بعدش برش میگردونم اونجا
     const callbackUrl = searchParams.get('callbackUrl') || `/${lang}/quiz`
-
+    // console.log(callbackUrl)
     const onSubmit = async (event) => {
         event.preventDefault()
 
         try {
-            const result = await signIn('credentials', {
+            const result = await signIn('Credentials', {
                 username: username.current,
                 password: password.current,
                 redirect: false,
                 callbackUrl,
             })
-
+            console.log(result)
             if (!result?.error) router.push(callbackUrl)
             else setError('error')
         } catch (error) {
@@ -106,7 +106,7 @@ export default function Login({lang, dictionary}) {
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                     اکانت نداری ؟{" "}
                                     <Link
-                                        href="/fa/auth/register"
+                                        href={`/${lang}/auth/register`}
                                         className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                                     >
                                         ثبت نام کن
@@ -117,7 +117,7 @@ export default function Login({lang, dictionary}) {
                                 type="button"
                                 className="px-7 py-2 text-white text-sm rounded bg-gray-600 shadow-md hover:shadow-lg w-full flex justify-center items-center"
                                 onClick={() =>
-                                    signIn("github", {callbackUrl: "/quiz"})
+                                    signIn("github", {callbackUrl: `/${lang}/quiz`})
                                 }
                             >
                                 ورود با گیت هاب{" "}
@@ -126,7 +126,7 @@ export default function Login({lang, dictionary}) {
                                     src={GithubImage}
                                     height={20}
                                     width={20}
-                                    alt=""
+                                    alt="github image"
                                 />
                             </button>
                         </div>

@@ -9,7 +9,7 @@ export const Header = ({lang, dictionary}) => {
                 <nav className="max-w-[85rem] w-full mx-auto px-4 md:px-6 lg:px-8" aria-label="Global">
                     <div className="relative md:flex md:items-center md:justify-between">
                         <div className="flex items-center justify-between">
-                            <Link href={'/'}
+                            <Link href={`/${lang}/`}
                                   className="flex-none text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                   aria-label="Brand">
                                 {dictionary['main'].appName}
