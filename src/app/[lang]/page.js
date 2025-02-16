@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {getLang} from "./dictionary";
-import {LocaleSwitcher} from "../../components/LocaleSwitcher";
+import {LocaleSwitcher} from "components/LocaleSwitcher";
 
 export default async function Home({params}) {
     const lang = (await params).lang
