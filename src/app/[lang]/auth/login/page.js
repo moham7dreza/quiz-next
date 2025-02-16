@@ -25,7 +25,7 @@ export default function Login({lang, dictionary}) {
         event.preventDefault()
 
         try {
-            const result = await signIn('Credentials', {
+            const result = await signIn('credentials', {
                 username: username.current,
                 password: password.current,
                 redirect: false,

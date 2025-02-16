@@ -3,6 +3,8 @@ import {match} from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
 import {defaultLocale, locales} from "./helpers";
 
+// export {default} from 'next-auth/middleware'
+
 
 function getLocale(request) {
     let headers = {}
