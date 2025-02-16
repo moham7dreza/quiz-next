@@ -7,6 +7,7 @@ import {ReduxProvider} from "store/provider";
 import {dir, locales} from "../../helpers";
 import localFont from "next/font/local";
 import {getLang} from "./dictionary";
+import AuthProvider from "./AuthProvider";
 
 // import localFont from 'next/font/local'
 //
@@ -60,7 +61,9 @@ export default async function RootLayout({children, params}) {
         <body className={vazirmatn.className}>
         <ReduxProvider>
             <MainLayout lang={lang} dictionary={dictionary}>
-                {children}
+                <AuthProvider>
+                    {children}
+                </AuthProvider>
             </MainLayout>
         </ReduxProvider>
         </body>

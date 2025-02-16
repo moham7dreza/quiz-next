@@ -3,9 +3,19 @@
 import {quiz} from "data";
 import {useState} from "react";
 import {QuizAnswers, QuizButton, QuizHeader, QuizResult,} from "components";
+import {useSession} from "next-auth/react";
+import {redirect} from "next/navigation";
+import Link from "next/link";
 
 export default function Quiz({dictionary, lang}) {
     // console.log(lang)
+
+    // برای احراز هویت توی کلاینت کامپوننت ها
+    const {data: session} = useSession({
+        required: true,
+        onUnauthenticated: () => redirect('/api/auth/signin?callbackUrl=/quiz')
+    })
+
     const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
     const [canPassToNextQuestion, setCanPassToNextQuestion] = useState(false)
     const [showQuizResult, setShowQuizResult] = useState(false)
@@ -79,6 +89,16 @@ export default function Quiz({dictionary, lang}) {
 
     return (
         <>
+            {
+                session?.user ? (
+                    <div className='w-full text-center'>
+                        <h2>session.user.name</h2>
+                        <Link href='/api/auth/singout' className='mx-1 my-5 px-1 py-1 text-sm rounded shadow bg-red-600 hover:bg-red-400'>
+                            خروج
+                        </Link>
+                    </div>
+                ) : null
+            }
             <h1>صفحه آزمون</h1>
             <QuizHeader activeQuestionIndex={activeQuestionIndex} questionsLength={questions.length}
                         showQuizResult={showQuizResult}/>
