@@ -1,5 +1,6 @@
-// for test in browser link localhost:3000/fa/api/auth/[...] according to file system
-
+// for test in browser link localhost:3000/api/auth/[...] according to file system
+// signin -> http://localhost:3000/api/auth/signin
+// providers -> http://localhost:3000/api/auth/providers
 import NextAuth from "next-auth"
 import {options} from "./options";
 
