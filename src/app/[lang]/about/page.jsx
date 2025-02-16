@@ -7,6 +7,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import {getServerSession} from "next-auth";
+import {options} from "../../(server)/api/auth/[...nextauth]/options";
+import {redirect} from "next/navigation";
 
 export function generateMetadata({params, searchParams}) {
     return {
@@ -14,7 +17,12 @@ export function generateMetadata({params, searchParams}) {
     }
 }
 
-export default function About() {
+export default async function About() {
+
+    // برای احراز هویت توی سرور کامپوننت ها
+    const session = await getServerSession(options)
+    if (!session) redirect('/api/auth/signin?callbackUrl=/about')
+
     return (<>
             <h1>درباره من</h1>
             <p>این صفحه درباره من است</p>
